@@ -1,4 +1,4 @@
-const ENGLISH_TO_MORSE = 
+export const ENGLISH_TO_MORSE = 
 {
    "A": ".-",
    "B": "-...",
@@ -27,23 +27,8 @@ const ENGLISH_TO_MORSE =
    "Z": "--.."
 }
 
-const MORSE_TO_ENGLISH = Object.fromEntries(Object.entries(ENGLISH_TO_MORSE).map(([key, value]) => [value, key]));
+export const MORSE_TO_ENGLISH = Object.fromEntries(Object.entries(ENGLISH_TO_MORSE).map(([key, value]) => [value, key]));
 
-function returnEnglishToMorse(){
-    return ENGLISH_TO_MORSE;
-}
-
-function returnMorseToEnglish(){
-    return MORSE_TO_ENGLISH;
-}
-
-function checkIfMorseCode(text){
-    if (text.includes("-") || text.includes(".")){
-        return true;
-    } else {
-        return false;
-    }
-}
 
 export const translateEnglishToMorse = (text) => {
     if (typeof text !== 'string') {
@@ -70,3 +55,6 @@ export const translateMorseToEnglish = (text) => {
         return MORSE_TO_ENGLISH[code];
     }).join('');
 }
+
+translateEnglishToMorse("Hi")
+translateMorseToEnglish("....")
