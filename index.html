@@ -5,22 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MORSE CODE</title>
     <script type="module" src="script.js"></script>
+    <link rel="stylesheet" href="./styles/main.css">
 </head>
 <body>
-    <div class="translator--title">
-        <h1>MORSE CODE TRANSLATOR</h1>
-        <p>Type text to convert to Morse Code</p>
-    </div>
+    <main class="page">
+        <div class="translator--title">
+            <h1>Morse Code Translator</h1>
+            <p>Type text to convert to Morse Code</p>
+        </div>
 
-    <div class="translator--translate--container">
-        <div class="translator--input">
-            <p class="translator--input"></p>
-            <textarea placeholder="Enter your text here..."></textarea>
+        <div class="translator--translate--container">
+            <div class="translator--input">
+                <p class="translator--input"></p>
+                <textarea placeholder="Enter your text here..."></textarea>
+            </div>
+            
+            <div class="translator--output">
+                <p class="translator--output"></p>
+                <textarea placeholder="Translation will appear here..."></textarea>
+            </div>
         </div>
-        <div class="translator--output">
-            <p class="translator--output"></p>
-            <textarea placeholder="Translation will appear here..."></textarea>
-        </div>
-    </div>
+    </main>
 </body>
 </html>

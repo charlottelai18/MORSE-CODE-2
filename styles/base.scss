@@ -1,0 +1,21 @@
+@use 'variables';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  color: variables.$text-colour;
+  background: variables.$gradient-pink;
+  background-repeat: no-repeat;
+}
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;  
+  align-items: center;
+  gap: 24px;
+  padding: 32px 16px;
+}

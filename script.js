@@ -55,6 +55,3 @@ export const translateMorseToEnglish = (text) => {
         return MORSE_TO_ENGLISH[code];
     }).join('');
 }
-
-translateEnglishToMorse("Hi")
-translateMorseToEnglish("....")
