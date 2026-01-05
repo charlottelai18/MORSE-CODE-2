@@ -31,30 +31,54 @@ export const MORSE_TO_ENGLISH = Object.fromEntries(Object.entries(ENGLISH_TO_MOR
 
 
 export const translateEnglishToMorse = (text) => {
-    if (typeof text !== 'string') {
-        throw new Error('Input must be a string');
-    }
+  if (typeof text !== "string") {
+    throw new Error("Input must be a string");
+  }
 
-    return text.toUpperCase().split('').map(char => {
-        if (!(char in ENGLISH_TO_MORSE)) {
+  const words = text.trim().toUpperCase().split(/\s+/);
+  if (words.length === 1 && words[0] === "") return "";
+
+  return words
+    .map((word) =>
+      word
+        .split("")
+        .map((char) => {
+          if (!(char in ENGLISH_TO_MORSE)) {
             throw new Error(`Character "${char}" cannot be translated to Morse code`);
-        }
-        return ENGLISH_TO_MORSE[char];
-    }).join(' ');
-}
+          }
+          return ENGLISH_TO_MORSE[char];
+        })
+        .join(" ")
+    )
+    .join(" / ");
+};
+
 
 export const translateMorseToEnglish = (text) => {
-    if (typeof text !== 'string') {
-        throw new Error('Input must be a string');
-    }
+  if (typeof text !== "string") {
+    throw new Error("Input must be a string");
+  }
 
-    return text.split(' ').map(code => {
-        if (!(code in MORSE_TO_ENGLISH)) {
+  const trimmed = text.trim();
+  if (!trimmed) return "";
+
+  const words = trimmed.split(/\s*\/\s*/);
+
+  return words
+    .map((word) =>
+      word
+        .split(/\s+/) 
+        .map((code) => {
+          if (!(code in MORSE_TO_ENGLISH)) {
             throw new Error(`Morse code "${code}" cannot be translated to English`);
-        }
-        return MORSE_TO_ENGLISH[code];
-    }).join('');
-}
+          }
+          return MORSE_TO_ENGLISH[code].toLowerCase();
+        })
+        .join("")
+    )
+    .join(" ");
+};
+
 
 // ---- UI state + render ----
 let mode = "EN_TO_MORSE"; 
@@ -63,7 +87,7 @@ const inputEl = document.querySelector("#inputText");
 const outputEl = document.querySelector("#outputText");
 const inputLabelEl = document.querySelector("#inputLabel");
 const outputLabelEl = document.querySelector("#outputLabel");
-const switchBtn = document.querySelector("#switchBtn");
+const switchBtn = document.querySelector("#switch--button--wrapper");
 
 function render() {
   const isEnToMorse = mode === "EN_TO_MORSE";
