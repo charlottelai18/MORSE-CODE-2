@@ -1,0 +1,33 @@
+@use 'variables';
+
+.switch--button--wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 2rem;
+
+    padding: 14px 28px;
+    border-radius: 999px;
+
+    background: linear-gradient(
+        135deg,
+        #9b4dff,
+        #7c2ae8
+    );
+    cursor: pointer;
+
+    /* Depth + glow */
+    box-shadow:
+        0 8px 20px rgba(124, 42, 232, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.25);
+}
+
+button{
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+}
