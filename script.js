@@ -55,3 +55,45 @@ export const translateMorseToEnglish = (text) => {
         return MORSE_TO_ENGLISH[code];
     }).join('');
 }
+
+// ---- UI state + render ----
+let mode = "EN_TO_MORSE"; 
+
+const inputEl = document.querySelector("#inputText");
+const outputEl = document.querySelector("#outputText");
+const inputLabelEl = document.querySelector("#inputLabel");
+const outputLabelEl = document.querySelector("#outputLabel");
+const switchBtn = document.querySelector("#switchBtn");
+
+function render() {
+  const isEnToMorse = mode === "EN_TO_MORSE";
+
+  inputLabelEl.textContent = isEnToMorse ? "Text Input" : "Morse Code Input";
+  outputLabelEl.textContent = isEnToMorse ? "Morse Code Output" : "Text Output";
+
+  inputEl.placeholder = isEnToMorse
+    ? "Enter English text here..."
+    : "Enter Morse here (letters split by space, words split by /)...";
+
+  try {
+    const input = inputEl.value;
+    const translated = isEnToMorse
+      ? translateEnglishToMorse(input)
+      : translateMorseToEnglish(input);
+
+    outputEl.value = translated;
+    outputEl.classList.remove("error");
+  } catch (err) {
+    outputEl.value = err.message;
+    outputEl.classList.add("error");
+  }
+}
+
+inputEl.addEventListener("input", render);
+
+switchBtn.addEventListener("click", () => {
+  mode = mode === "EN_TO_MORSE" ? "MORSE_TO_EN" : "EN_TO_MORSE";
+  render();
+});
+
+render();
