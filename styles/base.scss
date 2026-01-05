@@ -1,6 +1,11 @@
 @use 'variables';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
+* {
+  box-sizing: border-box;
+}
+
+
 html,
 body {
   min-height: 100%;
@@ -19,3 +24,11 @@ body {
   gap: 24px;
   padding: 32px 16px;
 }
+
+@media (max-width: 600px) {
+  .page {
+    padding: 24px 14px;
+    gap: 16px;
+  }
+}
+

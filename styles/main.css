@@ -1,4 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   min-height: 100%;
@@ -18,6 +22,12 @@ body {
   padding: 32px 16px;
 }
 
+@media (max-width: 600px) {
+  .page {
+    padding: 24px 14px;
+    gap: 16px;
+  }
+}
 .translator--title {
   text-align: center;
 }
@@ -28,9 +38,11 @@ body {
 
 .translator--translate--container {
   border-radius: 1.5rem;
-  padding: 32px;
-  width: 50rem;
-  height: 30rem;
+  padding: clamp(16px, 4vw, 32px);
+  width: min(50rem, 100%);
+  max-width: 50rem;
+  min-height: 30rem;
+  height: auto;
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -41,7 +53,8 @@ body {
 textarea {
   border-radius: 0.5rem;
   width: 100%;
-  height: 8rem;
+  min-height: 6rem;
+  height: clamp(6rem, 18vw, 10rem);
   background: rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
@@ -53,12 +66,20 @@ textarea::placeholder {
   color: #c49ee3;
 }
 
+@media (max-width: 600px) {
+  .translator--translate--container {
+    min-height: unset;
+  }
+  button {
+    width: 100%;
+  }
+}
 .switch--button--wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin: 2rem;
+  margin: 1.5rem 0;
   padding: 14px 28px;
   border-radius: 999px;
   background: linear-gradient(135deg, #9b4dff, #7c2ae8);
@@ -74,6 +95,15 @@ button {
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 0.2px;
+}
+
+@media (max-width: 600px) {
+  .switch--button--wrapper {
+    width: 100%;
+  }
+  .switch--button--wrapper .button {
+    width: 100%;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

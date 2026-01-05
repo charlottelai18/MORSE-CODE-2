@@ -1,26 +1,44 @@
-.translator--translate--container{
-    border-radius: 1.5rem;
-    padding: 32px;
-    width: 50rem;
-    height: 30rem;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 2px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+.translator--translate--container {
+  border-radius: 1.5rem;
+  padding: clamp(16px, 4vw, 32px);
+
+  width: min(50rem, 100%);
+  max-width: 50rem;
+
+  min-height: 30rem;
+  height: auto;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
 
-textarea{
-    border-radius: 0.5rem;
-    width: 100%;
-    height: 8rem;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 2px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+textarea {
+  border-radius: 0.5rem;
+  width: 100%;
+  min-height: 6rem;
+  height: clamp(6rem, 18vw, 10rem);
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
 }
+
 
 textarea::placeholder{
     color: #c49ee3;;
+}
+
+@media (max-width: 600px) {
+  .translator--translate--container {
+    min-height: unset;
+  }
+
+  button {
+    width: 100%;
+  }
 }
