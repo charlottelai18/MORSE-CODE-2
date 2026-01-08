@@ -1,1 +1,1 @@
-const translate = require("./script");
+import translate from "./script.js";
